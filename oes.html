@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Card Gallery</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+  }
+
+  /* Go Back Button */
+  .go-back {
+    display: inline-block;
+    margin: 20px;
+    padding: 10px 20px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  #photo-cards {
+    padding: 50px;
+    background-color: #f5f5f5;
+    text-align: center;
+  }
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+  }
+
+  .card {
+    width: 250px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+
+  .card img:hover {
+    transform: scale(1.05);
+  }
+
+  .card button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0 15px 0;
+  }
+
+  /* Modal styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+    animation: fadeIn 0.3s;
+  }
+
+  .modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 10px;
+    animation: zoomIn 0.3s;
+  }
+
+  @keyframes zoomIn {
+    from {transform: scale(0.5);}
+    to {transform: scale(1);}
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  .close {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<!-- Go Back Button -->
+<button class="go-back" onclick="goBack()">← Go Back</button>
+
+<section id="photo-cards">
+  <h2>ONLINE EXAMINATION SYSTEM</h2>
+  <div class="card-container">
+
+    <!-- Card 1 -->
+    <div class="card">
+      <img src="/images/OESS/Screenshot (11).png" alt="Project 1" onclick="openModal('/images/ECARGA/Screenshot%20(11).png')">
+      <div style="padding:15px;">
+        
+        
+        <button onclick="openModal('/images/ECARGA/Screenshot%20(11).png')">View</button>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <img src="/images/OESS/Screenshot%20(8).png" alt="Project 2" onclick="openModal('/images/OESS/Screenshot%20(8).png')">
+      <div style="padding:15px;">
+        
+       
+        <button onclick="openModal('/images/OESS/Screenshot%20(8).png')">View</button>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+      <img src="/images/OESS/Screenshot%20(9).png" alt="Project 3" onclick="openModal('/images/OESS/Screenshot%20(9).png')">
+      <div style="padding:15px;">
+        
+    
+        <button onclick="openModal('/images/OESS/Screenshot%20(9).png')">View</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImage">
+</div>
+
+<script>
+  function openModal(src) {
+    document.getElementById('myModal').style.display = "block";
+    document.getElementById('modalImage').src = src;
+  }
+
+  function closeModal() {
+    document.getElementById('myModal').style.display = "none";
+  }
+
+  function goBack() {
+    window.history.back();
+  }
+
+  // Close modal when clicking outside the image
+  window.onclick = function(event) {
+    const modal = document.getElementById('myModal');
+    if (event.target === modal) {
+      closeModal();
+    }
+  }
+</script>
+
+</body>
+</html>
